@@ -8,6 +8,7 @@ export default function LogsPage() {
   const { t } = useTranslation()
   const [stats, setStats] = useState({ total: 0, success: 0, error: 0, successRate: 0 })
   const [trendData, setTrendData] = useState<{date: string, total: number, success: number, error: number}[]>([])
+  const [logs, setLogs] = useState<any[]>([])
 
   useEffect(() => {
     api.getLogStats().then((d: any) => {
@@ -19,6 +20,9 @@ export default function LogsPage() {
     }).catch(() => {})
     api.getLogTrend(12).then((trend: any[]) => {
       if (trend && trend.length > 0) setTrendData(trend)
+    }).catch(() => {})
+    api.getLogs(100).then((data: any[]) => {
+      if (Array.isArray(data)) setLogs(data)
     }).catch(() => {})
   }, [])
 
@@ -60,7 +64,7 @@ export default function LogsPage() {
       </section>
 
       {/* 日志表格 */}
-      <RequestLogList />
+      <RequestLogList logs={logs} />
     </div>
   )
 }

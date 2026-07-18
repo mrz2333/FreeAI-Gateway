@@ -21,8 +21,6 @@ export const qwenAiConfig: BuiltinProviderConfig = {
     // Qwen3.6 series
     'Qwen3.6-Plus',
     'Qwen3.6-Max-Preview',
-    'Qwen3.6-27B',
-    'Qwen3.6-35B-A3B',
     // Existing models
     'Qwen3.5-Plus',
     'Qwen3.5-397B-A17B',
