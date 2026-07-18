@@ -1,5 +1,6 @@
-import { useState, useMemo, useCallback, memo } from 'react'
+import { useState, useMemo, useCallback, memo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import { api } from '@/api'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -162,7 +163,7 @@ ModelRow.displayName = 'ModelRow'
 
 export function ModelList() {
   const { t } = useTranslation()
-  const { providers, accounts } = useProvidersStore()
+  const { providers, accounts, setProviders, setAccounts } = useProvidersStore()
   const { modelMappings } = useProxyStore()
   const { toast } = useToast()
   
@@ -170,6 +171,20 @@ export function ModelList() {
   const [selectedProvider, setSelectedProvider] = useState<string>('all')
   const [selectedModels, setSelectedModels] = useState<Set<string>>(new Set())
   const [selectAll, setSelectAll] = useState(false)
+
+  // 自动加载 providers 和 accounts（如果 store 为空）
+  useEffect(() => {
+    if (providers.length === 0) {
+      api.getProviders().then((data: any[]) => {
+        if (Array.isArray(data)) setProviders(data)
+      }).catch(() => {})
+    }
+    if (accounts.length === 0) {
+      api.getAccounts().then((data: any[]) => {
+        if (Array.isArray(data)) setAccounts(data)
+      }).catch(() => {})
+    }
+  }, [])
   const [currentPage, setCurrentPage] = useState(1)
   
   const modelList = useMemo(() => {
