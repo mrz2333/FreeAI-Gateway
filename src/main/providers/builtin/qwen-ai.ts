@@ -15,6 +15,15 @@ export const qwenAiConfig: BuiltinProviderConfig = {
   enabled: true,
   description: 'Qwen AI international version (chat.qwen.ai)',
   supportedModels: [
+    // Qwen3.7 series
+    'Qwen3.7-Plus',
+    'Qwen3.7-Max',
+    // Qwen3.6 series
+    'Qwen3.6-Plus',
+    'Qwen3.6-Max-Preview',
+    'Qwen3.6-27B',
+    'Qwen3.6-35B-A3B',
+    // Existing models
     'Qwen3.5-Plus',
     'Qwen3.5-397B-A17B',
     'Qwen3-Max',
@@ -22,17 +31,21 @@ export const qwenAiConfig: BuiltinProviderConfig = {
     'Qwen3-Coder',
     'Qwen3-VL-235B-A22B',
     'Qwen3-Omni-Flash',
-    'Qwen2.5-Max',
   ],
   modelMappings: {
+    'Qwen3.7-Plus': 'qwen3.7-plus',
+    'Qwen3.7-Max': 'qwen3.7-max',
+    'Qwen3.6-Plus': 'qwen3.6-plus',
+    'Qwen3.6-Max-Preview': 'qwen3.6-max-preview',
+    'Qwen3.6-27B': 'qwen3.6-27b',
+    'Qwen3.6-35B-A3B': 'qwen3.6-35b-a3b',
     'Qwen3.5-Plus': 'qwen3.5-plus',
     'Qwen3.5-397B-A17B': 'qwen3.5-397b-a17b',
-    'Qwen3-Max': 'qwen3-max',
-    'Qwen3-235B-A22B-2507': 'qwen3-235b-a22b-2507',
+    'Qwen3-Max': 'qwen3-max-2026-01-23',
+    'Qwen3-235B-A22B-2507': 'qwen-plus-2025-07-28',
     'Qwen3-Coder': 'qwen3-coder-plus',
-    'Qwen3-VL-235B-A22B': 'qwen3-vl-235b-a22b',
-    'Qwen3-Omni-Flash': 'qwen3-omni-flash',
-    'Qwen2.5-Max': 'qwen2.5-max',
+    'Qwen3-VL-235B-A22B': 'qwen3-vl-plus',
+    'Qwen3-Omni-Flash': 'qwen3-omni-flash-2025-12-01',
   },
   credentialFields: [
     {

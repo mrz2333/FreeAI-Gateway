@@ -148,9 +148,10 @@ docker compose -f web/docker-compose.yml up -d --force-recreate
 |--------|------|----------|----------|------|
 | GLM (智谱清言) | ✅ | ✅ | ✅ cogview | 稳定 |
 | Kimi | ✅ | ✅ | — | 稳定 |
-| Qwen (通义千问) | ✅ | ✅ | — | 稳定 |
+| Qwen (通义千问国内版) | ✅ | ✅ | — | 稳定 |
+| Qwen AI (国际版) | ✅ | ✅ | — | 稳定 |
 | MiniMax | ✅ | — | — | 稳定 |
-| Z.ai | ✅ | — | — | 稳定 |
+| Z.ai | ✅ | — | — | 阿里云验证码拦截 |
 | DeepSeek | ✅ | — | — | 稳定 |
 | Perplexity | ✅ | — | — | 不稳定（Cloudflare 拦截） |
 

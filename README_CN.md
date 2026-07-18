@@ -54,8 +54,8 @@
 | Kimi          | JWT Token     | 是     | kimi-k2.5                                                                       |
 | MiniMax       | JWT Token     | 是     | MiniMax-M2.5                                                                    |
 | 🆕 Perplexity | JWT Token     | 是     | Sonar, Sonar Pro, Sonar Deep Research                                           |
-| Qwen (国内版)    | SSO Ticket    | 是     | Qwen3.5-Plus, Qwen3-Max, Qwen3-Flash, Qwen3-Coder, qwen-max-latest              |
-| Qwen AI (国际版) | JWT Token     | 是     | Qwen3.5-Plus, Qwen3-Max, Qwen3-VL-Plus, Qwen3-Coder-Plus, Qwen-Plus, Qwen-Turbo |
+| Qwen (国内版)    | SSO Ticket    | 是     | Qwen3, Qwen3-Max, Qwen3-Plus, Qwen3.5-Plus, Qwen3-Flash, Qwen3-Coder              |
+| Qwen AI (国际版) | JWT Token     | 是     | Qwen3.7-Plus, Qwen3.7-Max, Qwen3.6-Plus, Qwen3.6-Max-Preview, Qwen3.6-27B, Qwen3.6-35B-A3B |
 | Z.ai          | JWT Token     | 是     | GLM-5, GLM-4.7, GLM-4.6V, GLM-4.6                                               |
 
 ## 📥 安装
