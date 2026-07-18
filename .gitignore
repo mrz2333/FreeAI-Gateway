@@ -49,3 +49,8 @@ coverage/
 # Backup
 backup/
 
+
+# Runtime data
+data/
+docker-compose.yml
+Dockerfile

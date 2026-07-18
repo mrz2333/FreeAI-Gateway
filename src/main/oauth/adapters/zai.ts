@@ -15,7 +15,7 @@ import {
 } from '../types'
 
 const ZAI_API_BASE = 'https://chat.z.ai'
-const X_FE_VERSION = 'prod-fe-1.0.241'
+const X_FE_VERSION = 'prod-fe-1.1.77'
 
 const FAKE_HEADERS = {
   Accept: '*/*',
@@ -24,7 +24,7 @@ const FAKE_HEADERS = {
   'Cache-Control': 'no-cache',
   Origin: ZAI_API_BASE,
   Pragma: 'no-cache',
-  'Sec-Ch-Ua': '"Chromium";v="144", "Not(A:Brand";v="8", "Google Chrome";v="144"',
+  'Sec-Ch-Ua': '"Chromium";v="148", "Not(A:Brand";v="8", "Google Chrome";v="144"',
   'Sec-Ch-Ua-Mobile': '?0',
   'Sec-Ch-Ua-Platform': '"Windows"',
   'Sec-Fetch-Dest': 'empty',

@@ -20,7 +20,7 @@ import {
 } from '../utils/streamToolHandler'
 
 const ZAI_API_BASE = 'https://chat.z.ai'
-const X_FE_VERSION = 'prod-fe-1.0.241'
+const X_FE_VERSION = 'prod-fe-1.1.77'
 
 const FAKE_HEADERS = {
   Accept: '*/*',
@@ -29,7 +29,7 @@ const FAKE_HEADERS = {
   'Cache-Control': 'no-cache',
   Origin: ZAI_API_BASE,
   Pragma: 'no-cache',
-  'Sec-Ch-Ua': '"Chromium";v="144", "Not(A:Brand";v="8", "Google Chrome";v="144"',
+  'Sec-Ch-Ua': '"Chromium";v="148", "Not(A:Brand";v="8", "Google Chrome";v="144"',
   'Sec-Ch-Ua-Mobile': '?0',
   'Sec-Ch-Ua-Platform': '"Windows"',
   'Sec-Fetch-Dest': 'empty',
@@ -37,6 +37,7 @@ const FAKE_HEADERS = {
   'Sec-Fetch-Site': 'same-origin',
   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36',
   'X-FE-Version': X_FE_VERSION,
+          'x-region': 'overseas',
 }
 
 interface ZaiMessage {
@@ -217,6 +218,7 @@ export class ZaiAdapter {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
           'X-FE-Version': X_FE_VERSION,
+          'x-region': 'overseas',
           'Cookie': `token=${token}`,
           Origin: ZAI_API_BASE,
           Referer: `${ZAI_API_BASE}/`,
@@ -438,6 +440,7 @@ export class ZaiAdapter {
           'Content-Type': 'application/json',
           'X-Signature': signature,
           'X-FE-Version': X_FE_VERSION,
+          'x-region': 'overseas',
           'Cookie': `token=${token}`,
           Origin: ZAI_API_BASE,
           Referer: `${ZAI_API_BASE}/c/${chatId}`,
@@ -445,7 +448,7 @@ export class ZaiAdapter {
           'Sec-Fetch-Mode': 'cors',
           'Sec-Fetch-Site': 'same-origin',
           'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36',
-          'sec-ch-ua': '"Not(A:Brand";v="8", "Chromium";v="144", "Google Chrome";v="144"',
+          'sec-ch-ua': '"Not(A:Brand";v="8", "Chromium";v="148", "Google Chrome";v="144"',
           'sec-ch-ua-mobile': '?0',
           'sec-ch-ua-platform': '"macOS"',
           Priority: 'u=1, i',

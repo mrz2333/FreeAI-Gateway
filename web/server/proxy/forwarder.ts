@@ -133,8 +133,8 @@ function getProviderVendor(provider: Provider): string {
   if (id === 'deepseek' || name.includes('deepseek') || endpoint.includes('deepseek')) return 'deepseek'
   if (id === 'kimi' || name.includes('kimi') || endpoint.includes('kimi') || endpoint.includes('moonshot')) return 'kimi'
   if (id === 'minimax' || name.includes('minimax') || endpoint.includes('minimax')) return 'minimax'
+  if (id === 'qwen-ai' || (id === 'qwen-ai') || (name.includes('qwen') && endpoint.includes('qwen.ai'))) return 'qwen-ai'
   if (id === 'qwen' || name.includes('qwen') || name.includes('通义') || endpoint.includes('qwen')) return 'qwen'
-  if (id === 'qwen-ai' || endpoint.includes('dashscope')) return 'qwen-ai'
   if (id === 'zai' || name.includes('zai') || name.includes('z.ai') || endpoint.includes('zaibot') || endpoint.includes('chat.z.ai')) return 'zai'
   if (id === 'perplexity' || name.includes('perplexity') || endpoint.includes('perplexity.ai')) return 'perplexity'
   return 'generic'
@@ -365,6 +365,36 @@ async function dispatchToProvider(
           const data = await collectSSEToCompletion(transStream, req.model)
           const sessionId = handler.getSessionId()
           if (multiTurn && sessionId && sessionContext?.sessionId) { sessionManager.updateProviderSessionId(sessionContext.sessionId, sessionId) } else if (deleteAfter && sessionId) { adapter.deleteSession(sessionId).catch(() => {}) }
+          return { success: true, data }
+        }
+      }
+      case 'qwen-ai': {
+        const { QwenAiAdapter, QwenAiStreamHandler } = adps
+        if (!QwenAiAdapter) break
+        const qaAdapter = new QwenAiAdapter(provider, account)
+        const qaReq = multiTurn && existingProviderSessionId
+          ? { ...req, chatId: existingProviderSessionId }
+          : req
+        const qaResult = await qaAdapter.chatCompletion(qaReq)
+        const qaHandler = new QwenAiStreamHandler(req.model)
+        if (req.stream) {
+          const transStream = await qaHandler.handleStream(qaResult.response.data, qaResult.response)
+          res.setHeader('Content-Type', 'text/event-stream')
+          res.setHeader('Cache-Control', 'no-cache')
+          res.setHeader('Connection', 'keep-alive')
+          res.setHeader('Access-Control-Allow-Origin', '*')
+          transStream.pipe(res)
+          await new Promise<void>((resolve, reject) => {
+            transStream.on('end', resolve)
+            transStream.on('error', (e) => { console.error('[Forwarder] QwenAI stream error:', e.message); resolve() })
+            res.on('close', resolve)
+          })
+          if (multiTurn && qaResult.chatId && sessionContext?.sessionId) { sessionManager.updateProviderSessionId(sessionContext.sessionId, qaResult.chatId) }
+          return { success: true }
+        } else {
+          const transStream = await qaHandler.handleStream(qaResult.response.data, qaResult.response)
+          const data = await collectSSEToCompletion(transStream, req.model)
+          if (multiTurn && qaResult.chatId && sessionContext?.sessionId) { sessionManager.updateProviderSessionId(sessionContext.sessionId, qaResult.chatId) }
           return { success: true, data }
         }
       }

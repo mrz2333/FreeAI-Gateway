@@ -21,7 +21,7 @@ export const zaiConfig: BuiltinProviderConfig = {
     'Sec-Fetch-Dest': 'empty',
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Site': 'same-origin',
-    'X-FE-Version': 'prod-fe-1.0.241',
+    'X-FE-Version': 'prod-fe-1.1.77',
   },
   enabled: true,
   description: 'Z.ai - Free AI Chatbot powered by GLM-5 and GLM-4.7',
