@@ -31,7 +31,7 @@
 ## ✨ 功能特性
 
 - OpenAI 兼容 API：提供标准 OpenAI 兼容接口，无缝对接现有工具
-- 多服务商支持：支持 DeepSeek、GLM、Kimi、MiniMax、Perplexity 🆕、Qwen、Z.ai 等
+- 多服务商支持：支持 DeepSeek、GLM、Kimi、MiniMax、Perplexity、Qwen、Z.ai、Dola (豆包) 等
 - 🆕 多轮对话支持：完整支持多轮对话，提供会话管理和上下文保持功能
 - 🆕 工具调用支持：通过提示词工程为所有模型提供通用工具调用能力，兼容 Cherry Studio、Kilo Code 等客户端
 - 🆕 模型映射：灵活的模型名称映射，支持通配符和首选服务商/账户选择
@@ -57,6 +57,7 @@
 | Qwen (国内版)    | SSO Ticket    | 是     | Qwen3, Qwen3-Max, Qwen3-Plus, Qwen3.5-Plus, Qwen3-Flash, Qwen3-Coder              |
 | Qwen AI (国际版) | JWT Token     | 是     | Qwen3.7-Plus, Qwen3.7-Max, Qwen3.6-Plus, Qwen3.6-Max-Preview, Qwen3.6-27B, Qwen3.6-35B-A3B |
 | Z.ai          | JWT Token     | 是     | GLM-5, GLM-4.7, GLM-4.6V, GLM-4.6                                               |
+| 🆕 Dola (豆包) | Cookie       | —     | dola-chat, dola-expert, dola-writing, dola-image, dola-translate, dola-photo-qa, dola-video |
 
 ## 📥 安装
 

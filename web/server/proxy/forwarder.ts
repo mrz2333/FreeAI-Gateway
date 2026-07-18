@@ -137,6 +137,7 @@ function getProviderVendor(provider: Provider): string {
   if (id === 'qwen' || name.includes('qwen') || name.includes('通义') || endpoint.includes('qwen')) return 'qwen'
   if (id === 'zai' || name.includes('zai') || name.includes('z.ai') || endpoint.includes('zaibot') || endpoint.includes('chat.z.ai')) return 'zai'
   if (id === 'perplexity' || name.includes('perplexity') || endpoint.includes('perplexity.ai')) return 'perplexity'
+  if (id === 'dola' || name.includes('dola') || name.includes('豆包') || endpoint.includes('dola.com')) return 'dola'
   return 'generic'
 }
 
@@ -450,6 +451,12 @@ async function dispatchToProvider(
           if (multiTurn && sessionId && sessionContext?.sessionId) { sessionManager.updateProviderSessionId(sessionContext.sessionId, sessionId) } else if (deleteAfter && sessionId) { adapter.deleteSession(sessionId).catch(() => {}) }
           return { success: true, data }
         }
+      }
+      case 'dola': {
+        const { dolaChatCompletion } = adps
+        if (!dolaChatCompletion) break
+        await dolaChatCompletion(provider, account, req, res)
+        return { success: true }
       }
       default:
         break

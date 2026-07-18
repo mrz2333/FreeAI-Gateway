@@ -75,7 +75,7 @@
 ## 功能特性
 
 - ✅ **OpenAI 兼容 API**：标准 `/v1/chat/completions` 接口，无缝接入 Cherry Studio、Kilo Code、Cline 等
-- ✅ **多供应商支持**：GLM、Kimi、Qwen、MiniMax、Z.ai、DeepSeek、Perplexity
+- ✅ **多供应商支持**：GLM、Kimi、Qwen、MiniMax、Z.ai、DeepSeek、Perplexity、Dola (Doubao)
 - ✅ **多轮对话**：完整会话管理，上下文保留
 - ✅ **Function Calling**：通用工具调用，prompt engineering 实现，兼容所有模型
 - ✅ **流式输出**：SSE 实时流式响应
@@ -154,8 +154,10 @@ docker compose -f web/docker-compose.yml up -d --force-recreate
 | Z.ai | ✅ | — | — | 阿里云验证码拦截 |
 | DeepSeek | ✅ | — | — | 稳定 |
 | Perplexity | ✅ | — | — | 不稳定（Cloudflare 拦截） |
+| Dola (豆包) | ✅ | — | ✅ | 稳定，支持专家模式/写作/翻译/视频 |
 
 > Token 有效期因平台而异，过期后在管理界面更新即可。
+> Dola 使用 Cookie 认证（字节跳动 passport），需定期从浏览器提取更新。
 
 ---
 
